@@ -249,6 +249,70 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
+        /* Section Contact */
+        #contact {
+            background-color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 30px auto 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .submit-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
         /* Pied de page */
         footer {
             text-align: center;
@@ -295,6 +359,18 @@
         section {
             animation: fadeIn 0.8s ease-out;
         }
+        
+        /* Message de confirmation */
+        .confirmation-message {
+            display: none;
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
     </style>
 </head>
 <body>
@@ -307,6 +383,7 @@
             <a href="#projets">Projets</a>
             <a href="#recommandations">Recommandations</a>
             <a href="#competences">Compétences</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
     
@@ -365,10 +442,77 @@
         </blockquote>
     </section>
 
+    <section id="contact" role="region" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contactez-moi</h2>
+        <p>N'hésitez pas à me contacter pour discuter de vos projets ou pour toute question.</p>
+        
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="name">Nom complet</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Sujet</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Envoyer le message</button>
+            
+            <div class="confirmation-message" id="confirmationMessage">
+                Votre message a été envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
+            </div>
+        </form>
+    </section>
+
     <footer role="contentinfo">
         <p>Copyright &copy; 2025 Portfolio de Dimanche - Tous droits réservés</p>
         <p style="margin-top: 10px; font-size: 0.9rem;">Développeur Web Full Stack | dimanche.dev@example.com | +33 6 12 34 56 78</p>
     </footer>
     
+    <script>
+        // Gestion de la soumission du formulaire
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupération des valeurs du formulaire
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Ici, vous pouvez ajouter le code pour envoyer les données à un serveur
+            // Pour l'instant, nous affichons simplement un message de confirmation
+            
+            // Affichage du message de confirmation
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            confirmationMessage.style.display = 'block';
+            
+            // Réinitialisation du formulaire
+            document.getElementById('contactForm').reset();
+            
+            // Masquer le message après 5 secondes
+            setTimeout(function() {
+                confirmationMessage.style.display = 'none';
+            }, 5000);
+            
+            // Log des données (à remplacer par l'envoi réel)
+            console.log('Message reçu:');
+            console.log('Nom:', name);
+            console.log('Email:', email);
+            console.log('Sujet:', subject);
+            console.log('Message:', message);
+        });
+    </script>
 </body>
 </html>
