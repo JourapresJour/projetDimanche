@@ -35,8 +35,75 @@
             scroll-behavior: smooth;
         }
         
-        /* Styles pour l'en-tête et les sections */
-        header, section {
+        /* Header personnalisé selon votre demande */
+        .custom-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 20px 10%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .header-name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .contact-info {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info div {
+            margin-bottom: 5px;
+        }
+        
+        .header-nav {
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            padding-top: 15px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 25px;
+            padding: 8px 0;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Styles pour les sections */
+        section {
             padding: 50px 10%;
             margin-bottom: 20px;
             background-color: var(--light-color);
@@ -64,31 +131,8 @@
         #profil {
             text-align: center;
             padding-top: 70px;
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
+            background-color: white;
             position: relative;
-            overflow: hidden;
-        }
-        
-        #profil::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        #profil h1, #profil p, #profil nav {
-            position: relative;
-            z-index: 1;
-        }
-        
-        #profil h1 {
-            color: white;
         }
         
         .avatar {
@@ -96,12 +140,10 @@
             height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid white;
+            border: 5px solid var(--secondary-color);
             margin-bottom: 20px;
             transition: var(--transition);
             box-shadow: var(--shadow);
-            position: relative;
-            z-index: 1;
         }
         
         .avatar:hover {
@@ -115,54 +157,43 @@
             margin: 0 auto 25px;
         }
         
-        /* Navigation */
-        nav {
-            margin-top: 20px;
-        }
-        
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-weight: 500;
-            margin: 0 15px;
-            padding: 10px 20px;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-        
-        nav a:hover {
-            background-color: white;
-            color: var(--primary-color);
-            border-color: white;
-        }
-        
-        /* Section compétences */
+        /* Section compétences en cartes */
         #competences {
             background-color: white;
         }
         
-        .skills-list ul {
-            list-style-type: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
         
-        .skills-list li {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 20px;
+        .skill-card {
+            background-color: white;
             border-radius: var(--border-radius);
-            font-weight: 500;
-            transition: var(--transition);
+            padding: 25px;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid #e0e0e0;
+            text-align: center;
         }
         
-        .skills-list li:hover {
-            transform: translateY(-5px);
-            background-color: var(--primary-color);
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .skill-experience {
+            color: var(--secondary-color);
+            font-weight: 500;
         }
         
         /* Section projets */
@@ -220,6 +251,10 @@
             background-color: white;
         }
         
+        .recommendations-container {
+            margin-bottom: 40px;
+        }
+        
         blockquote {
             background-color: var(--secondary-color);
             color: white;
@@ -249,14 +284,24 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
-        /* Section Contact */
-        #contact {
+        /* Section Formulaire de Recommandation */
+        #recommendation-form {
             background-color: white;
         }
         
-        .contact-form {
+        .form-container {
             max-width: 600px;
-            margin: 30px auto 0;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: var(--primary-color);
         }
         
         .form-group {
@@ -313,6 +358,69 @@
             transform: translateY(0);
         }
         
+        /* Popup de confirmation */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            animation: popIn 0.5s ease-out;
+        }
+        
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .popup-icon {
+            font-size: 4rem;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+        
+        .popup-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .popup-message {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .popup-close {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .popup-close:hover {
+            background-color: var(--primary-color);
+        }
+        
         /* Pied de page */
         footer {
             text-align: center;
@@ -323,8 +431,26 @@
         
         /* Media queries pour la responsivité */
         @media (max-width: 768px) {
-            header, section {
+            .custom-header, section {
                 padding: 30px 5%;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info {
+                text-align: center;
+                margin-top: 15px;
+            }
+            
+            .header-nav {
+                flex-wrap: wrap;
+            }
+            
+            .nav-link {
+                margin: 5px 15px;
             }
             
             h1 {
@@ -335,13 +461,8 @@
                 font-size: 1.5rem;
             }
             
-            .skills-list ul {
-                flex-direction: column;
-            }
-            
-            nav a {
-                display: block;
-                margin: 10px 0;
+            .skills-container {
+                grid-template-columns: 1fr;
             }
             
             .avatar {
@@ -359,44 +480,55 @@
         section {
             animation: fadeIn 0.8s ease-out;
         }
-        
-        /* Message de confirmation */
-        .confirmation-message {
-            display: none;
-            background-color: #2ecc71;
-            color: white;
-            padding: 15px;
-            border-radius: var(--border-radius);
-            margin-top: 20px;
-            text-align: center;
-            animation: fadeIn 0.5s ease-out;
-        }
     </style>
 </head>
 <body>
 
-    <header id="profil" role="banner">
-        <img src="https://avatar.iran.liara.run/public/boy?username=Dimanche" alt="Photo de profil de Dimanche" class="avatar">
-        <h1>Bonjour, je suis Dimanche</h1>
-        <p>Développeur Web Full Stack passionné par la création d'expériences numériques innovantes et performantes.</p>
-        <nav role="navigation">
-            <a href="#projets">Projets</a>
-            <a href="#recommandations">Recommandations</a>
-            <a href="#competences">Compétences</a>
-            <a href="#contact">Contact</a>
+    <header class="custom-header" role="banner">
+        <div class="header-top">
+            <div class="header-name">Dimanche</div>
+            <div class="contact-info">
+                <div>© jdoeejeemailcom</div>
+                <div>Ry +13456764598</div>
+            </div>
+        </div>
+        <nav class="header-nav" role="navigation">
+            <a href="#profil" class="nav-link">About Me</a>
+            <a href="#competences" class="nav-link">Skills</a>
+            <a href="#projets" class="nav-link">Projects</a>
+            <a href="#recommandations" class="nav-link">Recommendations</a>
         </nav>
     </header>
     
+    <section id="profil" role="region" aria-labelledby="profil-heading">
+        <h2 id="profil-heading">À propos de moi</h2>
+        <img src="https://avatar.iran.liara.run/public/boy?username=Dimanche" alt="Photo de profil de Dimanche" class="avatar">
+        <p>Développeur Web Full Stack passionné par la création d'expériences numériques innovantes et performantes. Avec plusieurs années d'expérience dans le développement d'applications web modernes, je mets mes compétences au service de vos projets.</p>
+    </section>
+    
     <section id="competences" role="region" aria-labelledby="competences-heading">
-        <h2 id="competences-heading">Compétences et Profil</h2>
-        <p>Voici mes compétences techniques principales :</p>
-        <div class="skills-list">
-            <ul>
-                <li><strong>Frontend</strong> : HTML5, CSS3, JavaScript, React, Vue.js</li>
-                <li><strong>Backend</strong> : Node.js, Python, PHP, Bases de données</li>
-                <li><strong>Outils</strong> : Git, Docker, VS Code, Figma</li>
-                <li><strong>Mobile</strong> : React Native, Flutter</li>
-            </ul>
+        <h2 id="competences-heading">Compétences</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <div class="skill-name">HTML</div>
+                <div class="skill-experience">2 ans d'expérience</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">JavaScript</div>
+                <div class="skill-experience">3 ans d'expérience</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">CSS</div>
+                <div class="skill-experience">2 ans d'expérience</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">React</div>
+                <div class="skill-experience">1.5 ans d'expérience</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-name">Node.js</div>
+                <div class="skill-experience">1 an d'expérience</div>
+            </div>
         </div>
     </section>
 
@@ -426,54 +558,57 @@
     <section id="recommandations" role="region" aria-labelledby="recommandations-heading">
         <h2 id="recommandations-heading">Recommandations</h2>
         
-        <blockquote class="recommendation-item">
-            <p>"Dimanche a fait preuve d'un professionnalisme remarquable lors de notre collaboration. Sa capacité à comprendre rapidement les besoins clients et à proposer des solutions techniques innovantes est impressionnante. Je le recommande vivement pour tout projet de développement web."</p>
-            <footer>— Pierre Martin, Directeur Technique chez WebSolutions</footer>
-        </blockquote>
+        <div class="recommendations-container" id="recommendationsList">
+            <blockquote class="recommendation-item">
+                <p>"Dimanche a fait preuve d'un professionnalisme remarquable lors de notre collaboration. Sa capacité à comprendre rapidement les besoins clients et à proposer des solutions techniques innovantes est impressionnante. Je le recommande vivement pour tout projet de développement web."</p>
+                <footer>— Pierre Martin, Directeur Technique chez WebSolutions</footer>
+            </blockquote>
+            
+            <blockquote class="recommendation-item">
+                <p>"La qualité du code de Dimanche est exceptionnelle, et j'ai été particulièrement impressionné par sa méthodologie de travail et son souci du détail. Son portfolio démontre une évolution constante et une réelle passion pour son métier."</p>
+                <footer>— Sophie Leroy, Lead Developer à TechInnovation</footer>
+            </blockquote>
+            
+            <blockquote class="recommendation-item">
+                <p>"Travailler avec Dimanche a été une expérience enrichissante. Son expertise en développement frontend et backend a grandement contribué au succès de notre projet. Son approche collaborative et sa capacité à résoudre des problèmes complexes en font un atout précieux pour toute équipe."</p>
+                <footer>— Thomas Dubois, Chef de Projet Digital</footer>
+            </blockquote>
+        </div>
         
-        <blockquote class="recommendation-item">
-            <p>"La qualité du code de Dimanche est exceptionnelle, et j'ai été particulièrement impressionné par sa méthodologie de travail et son souci du détail. Son portfolio démontre une évolution constante et une réelle passion pour son métier."</p>
-            <footer>— Sophie Leroy, Lead Developer à TechInnovation</footer>
-        </blockquote>
-        
-        <blockquote class="recommendation-item">
-            <p>"Travailler avec Dimanche a été une expérience enrichissante. Son expertise en développement frontend et backend a grandement contribué au succès de notre projet. Son approche collaborative et sa capacité à résoudre des problèmes complexes en font un atout précieux pour toute équipe."</p>
-            <footer>— Thomas Dubois, Chef de Projet Digital</footer>
-        </blockquote>
+        <div id="recommendation-form">
+            <div class="form-container">
+                <h3 class="form-title">Laissez une Recommandation</h3>
+                <form id="recommendationForm">
+                    <div class="form-group">
+                        <label for="recommender-name">Votre nom</label>
+                        <input type="text" id="recommender-name" name="recommender-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recommender-position">Votre poste</label>
+                        <input type="text" id="recommender-position" name="recommender-position" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="recommendation-text">Votre recommandation</label>
+                        <textarea id="recommendation-text" name="recommendation-text" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Soumettre</button>
+                </form>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" role="region" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Contactez-moi</h2>
-        <p>N'hésitez pas à me contacter pour discuter de vos projets ou pour toute question.</p>
-        
-        <form class="contact-form" id="contactForm">
-            <div class="form-group">
-                <label for="name">Nom complet</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Adresse email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="subject">Sujet</label>
-                <input type="text" id="subject" name="subject" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn">Envoyer le message</button>
-            
-            <div class="confirmation-message" id="confirmationMessage">
-                Votre message a été envoyé avec succès ! Je vous répondrai dans les plus brefs délais.
-            </div>
-        </form>
-    </section>
+    <!-- Popup de confirmation -->
+    <div class="popup-overlay" id="confirmationPopup">
+        <div class="popup-content">
+            <div class="popup-icon">✓</div>
+            <h3 class="popup-title">Merci pour votre recommandation !</h3>
+            <p class="popup-message">Votre recommandation a été ajoutée avec succès et sera visible sur le site.</p>
+            <button class="popup-close" id="closePopup">Fermer</button>
+        </div>
+    </div>
 
     <footer role="contentinfo">
         <p>Copyright &copy; 2025 Portfolio de Dimanche - Tous droits réservés</p>
@@ -481,37 +616,43 @@
     </footer>
     
     <script>
-        // Gestion de la soumission du formulaire
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Gestion de la soumission du formulaire de recommandation
+        document.getElementById('recommendationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Récupération des valeurs du formulaire
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
+            const name = document.getElementById('recommender-name').value;
+            const position = document.getElementById('recommender-position').value;
+            const text = document.getElementById('recommendation-text').value;
             
-            // Ici, vous pouvez ajouter le code pour envoyer les données à un serveur
-            // Pour l'instant, nous affichons simplement un message de confirmation
+            // Création d'un nouvel élément de recommandation
+            const newRecommendation = document.createElement('blockquote');
+            newRecommendation.className = 'recommendation-item';
+            newRecommendation.innerHTML = `
+                <p>"${text}"</p>
+                <footer>— ${name}, ${position}</footer>
+            `;
             
-            // Affichage du message de confirmation
-            const confirmationMessage = document.getElementById('confirmationMessage');
-            confirmationMessage.style.display = 'block';
+            // Ajout de la nouvelle recommandation à la liste
+            document.getElementById('recommendationsList').appendChild(newRecommendation);
+            
+            // Affichage du popup de confirmation
+            document.getElementById('confirmationPopup').style.display = 'flex';
             
             // Réinitialisation du formulaire
-            document.getElementById('contactForm').reset();
-            
-            // Masquer le message après 5 secondes
-            setTimeout(function() {
-                confirmationMessage.style.display = 'none';
-            }, 5000);
-            
-            // Log des données (à remplacer par l'envoi réel)
-            console.log('Message reçu:');
-            console.log('Nom:', name);
-            console.log('Email:', email);
-            console.log('Sujet:', subject);
-            console.log('Message:', message);
+            document.getElementById('recommendationForm').reset();
+        });
+        
+        // Fermeture du popup
+        document.getElementById('closePopup').addEventListener('click', function() {
+            document.getElementById('confirmationPopup').style.display = 'none';
+        });
+        
+        // Fermeture du popup en cliquant en dehors
+        document.getElementById('confirmationPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
         });
     </script>
 </body>
